@@ -30,7 +30,7 @@ Because you're in an RProject, you don't need to set your working directory in R
 - Use the glimpse function to look at the loaded data
 
 ```{r}
-
+glimpse(grants)
 
 ```
 
@@ -38,7 +38,7 @@ Because you're in an RProject, you don't need to set your working directory in R
 - Create a variable `org` that contains the `organization` column of the dataset
 
 ```{r}
-
+org = grants$organization
 
 ```
 
@@ -46,7 +46,7 @@ Because you're in an RProject, you don't need to set your working directory in R
 - Confirm that the "organization" column is a vector using the `is.vector()` function. (This is a useful debugging tip if you hit errors later!)
 
 ```{r}
-
+is.vector(grants$organization)
 
 ```
 
@@ -56,28 +56,28 @@ Now you can ask some interesting questions about the dataset:
 - What was the mean grant value?
 
 ```{r}
-
+mean(grants$total_amount)
 ```
 
 
 - What was the dollar amount of the largest grant?
 
 ```{r}
-
+max(grants$total_amount)
 ```
 
 
 - What was the dollar amount of the smallest grant?
 
 ```{r}
-
+min(grants$total_amount)
 ```
 
 
 - Which organization received the largest grant?
 
 ```{r}
-
+grants$organization[which.max(grants$total_amount)]
 
 ```
 
@@ -85,7 +85,7 @@ Now you can ask some interesting questions about the dataset:
 - Which organization received the smallest grant?
 
 ```{r}
-
+grants$organization[which.min(grants$total_amount)]
 ```
 
 - How many grants were awarded in 2010?
@@ -123,13 +123,13 @@ Luckily, you can pass the USPersonalExpenditure variable as an argument to the `
 Do this, storing the result in a new variable
 
 ```{r}
-
+Expenditure_Frames = USPersonalExpenditure
 ```
 
 
 What are the current column names of your dataframe?
 ```{r}
-
+colnames(Expenditure_Frame)
 ```
 
 
@@ -137,14 +137,14 @@ Consider: why are they so strange? (Think about whether you could use a number l
 
 What are the current row names of your dataframe?
 ```{r}
-
+rownames(Expenditure_Frame)
 ```
 
 
 Add a column "Category" to your data frame that contains the rownames
 
 ```{r}
-
+Expenditure_Frame$Catergory = rownames(Expenditure_Frame)
 ```
 
 Consider how this data isn't tidy. Use the `pivot_longer()` function from last class to make the data tidy. 
